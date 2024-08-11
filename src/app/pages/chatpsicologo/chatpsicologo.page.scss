@@ -1,0 +1,58 @@
+.barra {
+  --background: linear-gradient(90deg, rgba(140,213,215,1) 0%, rgba(13,115,119,1) 100%);
+}
+
+ion-header {
+  margin-bottom: 10px;
+}
+
+ion-content {
+    padding: 15px;
+  }
+  
+  .message-sent {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .message-received {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  .message-bubble {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #e1ffc7;
+    word-wrap: break-word;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+  .message-sent .message-bubble {
+    background-color: rgba(140,213,215,1);
+  }
+  
+  .message-received .message-bubble {
+    background-color: rgb(235, 235, 235);
+  }
+  
+  ion-footer {
+    padding: 0 15px;
+  }
+  
+  .message-input {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  ion-button {
+    --background:  rgba(13,115,119,1);
+    color: white;
+  }
+
+  ion-title {
+    font-size: 18px;
+  }

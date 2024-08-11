@@ -1,0 +1,158 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar class="barra">
+      <ion-title>Opciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item button (click)="goHome()">
+        <ion-icon slot="start" name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-item>
+      <ion-item button (click)="goSoporte()">
+        <ion-icon slot="start" name="construct"></ion-icon>
+        <ion-label>Soporte</ion-label>
+      </ion-item>
+      <ion-item button (click)="goEditar()">
+        <ion-icon slot="start" name="pencil"></ion-icon>
+        <ion-label>Editar datos</ion-label>
+      </ion-item>
+      <ion-item button (click)="goHistorial()">
+        <ion-icon slot="start" name="calendar"></ion-icon>
+        <ion-label>Mi Historial</ion-label>
+      </ion-item>
+      <ion-item button (click)="logout()">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Contenido principal -->
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar class="barra">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Soporte</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-col>
+            <ion-select [(ngModel)]="mdl_opcion" (ionChange)="cambiarOpcion()" label="Solicitud"
+              label-placement="floating" fill="outline" interface="popover">
+              <ion-select-option>Reagendar Hora</ion-select-option>
+              <ion-select-option>Cancelar Hora</ion-select-option>
+              <ion-select-option>Realizar Consulta</ion-select-option>
+              <ion-select-option>Finalizar Consulta</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col *ngIf="formCancelar">
+            <ion-select label="Cita" [(ngModel)]="mdl_detalle" label-placement="floating" fill="outline"
+              (ionChange)="botonTrue(); botones()">
+              <ion-select-option [value]="cita" *ngFor="let cita of lista_citas">Paciente: {{cita.Nombre_Paciente}} /
+                Dia: {{cita.FechaCita}} / Hora: {{cita.HoraCita}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="block" class="boton" *ngIf="botonCancelar" (click)="cancelarCita()">Enviar
+              Solicitud</ion-button>
+          </ion-col>
+          <ion-col *ngIf="formReagendar">
+            <ion-select [(ngModel)]="mdl_detalle" (ionChange)="botonTrue(); botones()" label="Cita"
+              label-placement="floating" fill="outline">
+              <ion-select-option [value]="cita" *ngFor="let cita of lista_citas">Paciente: {{cita.Nombre_Paciente}} /
+                Dia: {{cita.FechaCita}} / Hora: {{cita.HoraCita}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col *ngIf="botonReagendar">
+            <ion-item class="ion-item2">
+              <ion-datetime displayFormat="MM/DD/YYYY" presentation="date" [(ngModel)]="selectedDate"
+                (ionChange)="loadAvailableTimes()"></ion-datetime>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item class="ion-item2" *ngIf="horas">
+              <ion-text style="margin-left: auto; margin-right: auto;">No hay citas disponibles para el
+                día seleccionado</ion-text>
+            </ion-item>
+            <ion-item class="ion-item2" *ngIf="fechaAnterior">
+              <ion-text style="margin-left: auto; margin-right: auto;">Seleccione un día posterior</ion-text>
+            </ion-item>
+          </ion-col>
+          <ion-col *ngIf="listaReagendar">
+            <ion-select [(ngModel)]="mdl_hora" (ionChange)="ultimoBoton()" label="Hora" label-placement="floating"
+              fill="outline">
+              <ion-select-option [value]="c" *ngFor="let c of availableTimes;">{{ c.HoraCita }}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="block" class="boton" *ngIf="botonFinal" (click)="reagendarCitaFinal()">Reagendar
+              Cita</ion-button>
+          </ion-col>
+          <ion-col *ngIf="formConsulta">
+            <ion-input [(ngModel)]="mdl_asunto" label="Asunto" label-placement="floating" fill="outline"
+              type="text"></ion-input>
+          </ion-col>
+          <ion-col *ngIf="formConsulta">
+            <ion-textarea [(ngModel)]="mdl_mensaje" [autoGrow]="true" label="Mensaje" labelPlacement="floating"
+              fill="outline" type="text"></ion-textarea>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="block" class="boton" (click)="enviarConsulta()" *ngIf="formConsulta">Enviar
+              Consulta</ion-button>
+          </ion-col>
+          <ion-col *ngIf="formFinalizar">
+            <ion-select label="Cita" [(ngModel)]="mdl_detalle" label-placement="floating" fill="outline"
+              (ionChange)="botonTrue(); botones()">
+              <ion-select-option [value]="cita" *ngFor="let cita of lista_citas">Paciente: {{cita.Nombre_Paciente}} /
+                Dia: {{cita.FechaCita}} / Hora: {{cita.HoraCita}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col *ngIf="botonFinalizar">
+            <ion-textarea [(ngModel)]="mdl_asunto" [autoGrow]="true" label="Diagnostico" label-placement="floating"
+              fill="outline" type="text"></ion-textarea>
+          </ion-col>
+          <ion-col *ngIf="botonFinalizar">
+            <ion-textarea [(ngModel)]="mdl_mensaje" [autoGrow]="true" label="Tratamiento" labelPlacement="floating"
+              fill="outline" type="text"></ion-textarea>
+          </ion-col>
+          <ion-col>
+            <ion-button expand="block" class="boton" *ngIf="botonFinalizar" (click)="finalizarCita()">Finalizar
+              Cita</ion-button>
+          </ion-col>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+</div>
+
+<ion-alert [isOpen]="isAlertOpen" header="Información" message="Su solicitud ha sido enviada" [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)">
+</ion-alert>
+
+
+<ion-alert [isOpen]="isAlertOpen2" header="Información"
+  message="Error al procesar solicitud, intentar nuevamente mas tarde" [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)">
+</ion-alert>
+
+<ion-alert [isOpen]="isAlertOpen3" header="Información" message="Cita reagendada correctamente" [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)">
+</ion-alert>
+
+<ion-alert [isOpen]="isAlertOpen4" header="Información" message="No hay registros" [buttons]="alertButtons"
+  (didDismiss)="setOpen4(false)">
+</ion-alert>
+
+<ion-alert [isOpen]="isAlertOpen5" header="Información" message="No puede dejar campos vacios" [buttons]="alertButtons"
+  (didDismiss)="setOpen5(false)">
+</ion-alert>

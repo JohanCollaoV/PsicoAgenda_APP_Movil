@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar class="barra">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" (click)="goChat()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ Nombre }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let message of messages" [ngClass]="{'message-sent': message.SenderId === SenderId, 'message-received': message.SenderId !== SenderId}">
+    <div class="message-bubble">{{ message.Mensaje }}</div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-textarea [autoGrow]="true" [(ngModel)]="newMessage" placeholder="Escribe tu mensaje..." class="message-input"></ion-textarea>
+    <ion-button (click)="sendMessage()" class="send-button">Enviar</ion-button>
+  </ion-toolbar>
+</ion-footer>

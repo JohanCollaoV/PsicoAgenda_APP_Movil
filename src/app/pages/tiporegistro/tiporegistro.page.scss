@@ -1,0 +1,61 @@
+.barra {
+    --background: linear-gradient(90deg, rgba(140,213,215,1) 0%, rgba(13,115,119,1) 100%);
+}
+
+.texto-home {
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 40px;
+}
+
+.subtexto {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 20px;
+}
+
+ion-content {
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.boton-login {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+ion-button {
+    --background: #32E0C4;
+    --border-radius: 30px;
+    text-transform: capitalize !important;
+    font-size: 18px;
+    height: 50px;
+    width: 130px;
+}
+
+ion-grid {
+    margin-top: 35px;
+}
+
+.boton-registro {
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+hr{
+    background-color: #32E0C4;
+    max-width: 50%;
+    height: 3px;
+}
+
+ion-item {
+    margin-top: 20px;
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    --background: #EEEEEE;  
+    border-radius: 10px;
+}

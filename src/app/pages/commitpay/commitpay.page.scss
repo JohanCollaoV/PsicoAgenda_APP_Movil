@@ -1,0 +1,58 @@
+.barra {
+    --background: linear-gradient(90deg, rgba(140,213,215,1) 0%, rgba(13,115,119,1) 100%);
+}
+
+.receipt-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.receipt-header img {
+  margin-right: 10px;
+}
+.header-logo {
+  height: 50px;
+}
+#tbl-transaction-detail {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+#tbl-transaction-detail td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.botones {
+  margin-top: 20px;
+  text-align: center;
+}
+.center-content {
+  text-align: center;
+  margin-top: 50px;
+}
+
+  .imagen_carga {
+    width: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+
+  }
+
+  .botonpago {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    --background: #32E0C4;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-transform: capitalize !important;
+
+  }
+
+  .error {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    max-width: 80%;
+  }

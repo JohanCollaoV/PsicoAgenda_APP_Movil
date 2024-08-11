@@ -1,0 +1,61 @@
+.barra {
+    --background: linear-gradient(90deg, rgba(140,213,215,1) 0%, rgba(13,115,119,1) 100%);
+}
+
+ion-button {
+    --background: #00BFA6;
+    --border-radius: 10px;
+    text-transform: capitalize !important;
+    font-size: 20px;
+    height: 100px;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    margin-top: 30px;
+}
+
+.citasencurso {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.barra {
+  background-color: #f8f8f8;
+}
+
+.texto-home {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+
+.cita-item + .cita-item {
+  border-top: 1px solid #ccc;
+}
+
+.icon-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-col ion-icon {
+  font-size: 32px; /* Aumentar tamaño del icono */
+  color: #6c757d;
+}
+
+.icon-col ion-text {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.center-content {
+  text-align: center;
+  padding: 16px;
+}

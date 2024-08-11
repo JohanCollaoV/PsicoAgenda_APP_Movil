@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="barra">
+    <ion-back-button (click)="volver()" slot="start" defaultHref="/">VOLVER</ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="fondo">
+  <div class="centrado">
+
+    <ion-img style="margin-bottom: 40px; margin-top: 40px; width: 70%; margin-left: auto; margin-right: auto;" src="../../../assets/img/registro-img.jpg"></ion-img> 
+    <ion-text style="font-size: 35px;" class="texto-home">¿Eres Psicologo o Paciente?</ion-text>
+    
+    <ion-grid>
+      <ion-col>
+        <ion-button (click)="psicologo()">Psicologo</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button style="--background: white; --color: #32E0C4;" (click)="paciente()">Paciente</ion-button>
+      </ion-col>
+    </ion-grid>
+
+  </div>
+</ion-content>

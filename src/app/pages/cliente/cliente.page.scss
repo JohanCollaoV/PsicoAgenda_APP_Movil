@@ -1,0 +1,53 @@
+.barra {
+    --background: linear-gradient(90deg, rgba(140,213,215,1) 0%, rgba(13,115,119,1) 100%);
+}
+
+ion-button {
+    --background: #00BFA6;
+    --border-radius: 10px;
+    text-transform: capitalize !important;
+    font-size: 20px;
+    height: 100px;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    margin-top: 30px;
+}
+
+.citasencurso {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.texto-home {
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subtexto {
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-img {
+    max-width: 15%;
+    position: static;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px      ;
+}
+
+ion-img {
+    margin-left: auto;
+    margin-right: auto;
+}

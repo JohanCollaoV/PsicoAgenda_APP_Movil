@@ -1,0 +1,120 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar class="barra">
+      <ion-title>Opciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item button (click)="goHome()">
+        <ion-icon slot="start" name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-item>
+      <ion-item button (click)="goSoporte()">
+        <ion-icon slot="start" name="construct"></ion-icon>
+        <ion-label>Soporte</ion-label>
+      </ion-item>
+      <ion-item button (click)="goEditar()">
+        <ion-icon slot="start" name="pencil"></ion-icon>
+        <ion-label>Editar datos</ion-label>
+      </ion-item>
+      <ion-item button (click)="goHistorial()">
+        <ion-icon slot="start" name="calendar"></ion-icon>
+        <ion-label>Mi Historial</ion-label>
+      </ion-item>
+      <ion-item button (click)="logout()">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar class="barra">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Editar Psicólogo</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-input disabled label="Primer Nombre" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_primerNombre"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input disabled label="Segundo Nombre" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_segundoNombre"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input disabled label="Primer Apellido" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_apellidoPaterno"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input disabled label="Segundo Apellido" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_apellidoMaterno"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Teléfono" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_telefono"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Calle" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_calle"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Número" label-placement="floating" fill="outline" type="number" [(ngModel)]="mdl_numero"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-select label="Comuna" label-placement="floating" fill="outline" [(ngModel)]="mdl_comuna">
+                <ion-select-option *ngFor="let comuna of lista_comunas" [value]="comuna.NombreComuna">{{ comuna.NombreComuna }}</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Valor Sesión" label-placement="floating" fill="outline" type="number" [(ngModel)]="mdl_valorSesion"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-select label="Especialidad" label-placement="floating" fill="outline" [(ngModel)]="mdl_especialidad">
+                <ion-select-option *ngFor="let especialidad of lista_especialidades" [value]="especialidad.NombreEspecialidad">{{ especialidad.NombreEspecialidad }}</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Descripción" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_descripcion"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" (click)="guardarDatos()">Guardar</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" (click)="goHome()" style="--background: #960000;">Cancelar</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>  
+</div>
+
+<ion-alert [isOpen]="isAlertOpen" header="Información" [message]="error_mensaje" [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)">
+</ion-alert>
+
+<ion-alert [isOpen]="isAlertOpen2" header="Información" [message]="error_mensaje" [buttons]="alertButtons"
+  (didDismiss)="setOpen2(false)">
+</ion-alert>
+
+

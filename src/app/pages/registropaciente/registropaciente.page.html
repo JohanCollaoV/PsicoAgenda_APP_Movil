@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="barra">
+    <ion-back-button (click)="volver()" slot="start" defaultHref="/">VOLVER</ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <div>Únete como paciente</div>
+      <ion-grid>
+        
+        <form (ngSubmit)="register()">
+          <ion-row>
+            <ion-col>
+              <ion-input label="Rut" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_rut" name="rut"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Calle" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_calle" name="calle"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Número" label-placement="floating" fill="outline" type="number" [(ngModel)]="mdl_numero" name="numero"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-select label="Comuna" label-placement="floating" fill="outline" [(ngModel)]="idComuna"s name="comuna">
+                <ion-select-option *ngFor="let comuna of lista_comunas" [value]="comuna.IdComuna">{{ comuna.NombreComuna }}</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Primer Nombre" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_primerNombre" name="primerNombre"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Segundo Nombre" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_segundoNombre" name="segundoNombre"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Apellido Paterno" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_apellidoPaterno" name="apellidoPaterno"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Apellido Materno" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_apellidoMaterno" name="apellidoMaterno"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Teléfono" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_telefono" name="telefono"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Fecha de Nacimiento" label-placement="floating" fill="outline" type="date" [(ngModel)]="mdl_fechaNacimiento" name="fechaNacimiento"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Correo Electrónico" label-placement="floating" fill="outline" type="email" [(ngModel)]="mdl_correo" name="correo"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Contraseña" label-placement="floating" fill="outline" type="password" [(ngModel)]="mdl_contrasena" name="contrasena"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" type="submit" class="boton" style="--background: #009688;">Enviar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-alert [isOpen]="isAlertOpen" header="Información" message="No puede dejar campos vacios" [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)">
+</ion-alert>
+
+<ion-alert [isOpen]="isAlertOpen3" header="Información" message="Registro Completado" [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)" (click)="goHome()">
+</ion-alert>

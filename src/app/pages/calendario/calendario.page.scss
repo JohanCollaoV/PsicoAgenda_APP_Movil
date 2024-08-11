@@ -1,0 +1,33 @@
+.barra {
+    --background: linear-gradient(90deg, rgba(140,213,215,1) 0%, rgba(13,115,119,1) 100%);
+}
+
+ion-button {
+    --background: #00BFA6;
+    --border-radius: 10px;
+    text-transform: capitalize !important;
+    color: black;
+}
+
+.calendario-lista {
+    margin-top: 0;
+    width: 100%; /* Asegura que la lista de horarios ocupe todo el ancho del contenedor */
+    text-align: center; /* Centra el texto de los botones dentro de la lista */
+  }
+
+  .botonpago {
+    margin-left: auto;
+    margin-right: auto;
+    --background: #32E0C4;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    
+  }
+
+  .imagen_carga {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40%;
+
+  }

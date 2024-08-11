@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="barra">
+    <ion-back-button (click)="volver()" slot="start" defaultHref="/">VOLVER</ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: url(../../../assets/icon/psicologia.png) no-repeat center center / cover;">
+  <ion-card>
+    <ion-card-content>
+      <div>Únete como psicólogo</div>
+      <ion-grid>
+        
+        <form (ngSubmit)="register()">
+          <ion-row>
+            <ion-col>
+              <ion-input label="Rut" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_rut" (change)="validarPrestador()" name="rut"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Calle" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_calle" name="calle" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Numeración" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_numeracion" name="numeracion" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-select label="Comuna" label-placement="floating" fill="outline" [(ngModel)]="idComuna" name="comuna" [disabled]="!rutValido">
+                <ion-select-option *ngFor="let comuna of lista_comunas" [value]="comuna.IdComuna">{{ comuna.NombreComuna }}</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Primer Nombre" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_nombre" name="primerNombre" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Segundo Nombre" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_nombre2" name="segundoNombre" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Primer Apellido" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_apellido" name="primerApellido" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Segundo Apellido" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_apellido2" name="segundoApellido" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Teléfono" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_telefono" name="telefono" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Fecha de Nacimiento" label-placement="floating" fill="outline" type="date" [(ngModel)]="mdl_fecha" name="fechaNacimiento" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Correo Electrónico" label-placement="floating" fill="outline" type="email" [(ngModel)]="mdl_correo" name="correo" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input label="Contraseña" label-placement="floating" fill="outline" type="password" [(ngModel)]="mdl_contrasena" name="contrasena" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input label="Valor por la sesión" label-placement="floating" fill="outline" type="text" [(ngModel)]="mdl_valor" name="valorSesion" [disabled]="!rutValido"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" type="submit" class="boton" style="--background: #009688;">Registrar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-alert [isOpen]="isAlertOpen" header="Información" message="No pueden haber campos vacios" [buttons]="alertButtons"
+(didDismiss)="setOpen(false)">
+</ion-alert>
+
+<ion-alert [isOpen]="isAlertOpen2" header="Información" message="Prestador No Registrado" [buttons]="alertButtons"
+(didDismiss)="setOpen(false)">
+</ion-alert>
+
+<ion-alert [isOpen]="isAlertOpen3" header="Información" message="Registro Completado" [buttons]="alertButtons"
+(didDismiss)="setOpen(false)" (click)="goHome()">
+</ion-alert>

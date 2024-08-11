@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="barra">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="fondo">
+  <div class="centrado">
+
+    <ion-img style="margin-bottom: 20px; margin-top: 20px; width: 80%; margin-left: auto; margin-right: auto;" src="../../../assets/img/home-img.png"></ion-img> 
+    <ion-text class="texto-home">Bienvenido!</ion-text>
+    <hr>
+    <br>
+    <ion-text class="subtexto">Agenda tus horas más rapido y facil</ion-text>
+    
+    <ion-button class="boton-login" (click)="goLogin()" expand="block">Entra</ion-button>
+    <ion-button class="boton-registro" (click)="registro()" expand="block">Registrate</ion-button>
+  
+  </div>
+
+</ion-content>

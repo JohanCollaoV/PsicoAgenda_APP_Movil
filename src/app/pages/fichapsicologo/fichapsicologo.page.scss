@@ -1,0 +1,82 @@
+.barra {
+    --background: linear-gradient(90deg, rgba(140,213,215,1) 0%, rgba(13,115,119,1) 100%);
+  }
+  
+  ion-button {
+    --background: #00BFA6;
+    --border-radius: 10px;
+    text-transform: capitalize !important;
+    font-size: 16px;
+    height: auto;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    margin-top: 20px;
+    padding: 10px 0;
+  }
+  
+  .citasencurso {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+  }
+  
+  .texto-home {
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 24px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .subtexto {
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .nav-img {
+    max-width: 15%;
+    position: static;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  ion-img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .texto-home {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .titulo-atenciones {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .citasencurso {
+    margin-bottom: 20px;
+  }
+  
+  .imagen_carga {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40%;
+  }
+  
+  ion-card-content p {
+    margin: 0;
+    padding: 4px 0;
+    font-size: 14px;
+  }
+  

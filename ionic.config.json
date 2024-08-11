@@ -1,0 +1,7 @@
+{
+  "name": "PsicoAgenda-MOVIL",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,111 @@
+<!-- Agregar el menú -->
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar class="barra">
+      <ion-title>Opciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item button (click)="goHome()">
+        <ion-icon slot="start" name="home"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-item>
+      <ion-item button (click)="goEditar()">
+        <ion-icon slot="start" name="pencil"></ion-icon>
+        <ion-label>Editar Tus Datos</ion-label>
+      </ion-item>
+      <ion-item button (click)="goHistorial()">
+        <ion-icon slot="start" name="calendar"></ion-icon>
+        <ion-label>Mi historial</ion-label>
+      </ion-item>
+      <ion-item button (click)="goSoporte()">
+        <ion-icon slot="start" name="construct"></ion-icon>
+        <ion-label>Soporte</ion-label>
+      </ion-item>
+      <ion-item button (click)="logout()">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Contenido principal -->
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar class="barra">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div id="PDF" *ngIf="transactionDetail; else errorTemplate" style="margin-left: 1%; margin-right: 1%;">
+      <div class="receipt-header">
+        <img src="../../../assets/img/psicoagendalogo.png" alt="Logo" class="header-logo" />
+        <h1>PsicoAgenda</h1>
+      </div>
+      <h2>Comprobante de Pago</h2>
+      <p>El pago de su cita #{{ idCita }} ha sido procesado correctamente.</p>
+      <p>Se adjuntan los datos de la transacción:</p>
+      <table id="tbl-transaction-detail">
+        <tbody>
+          <tr>
+            <td><strong>Estado:</strong></td>
+            <td>{{ transactionDetail.state }}</td>
+          </tr>
+          <tr>
+            <td><strong>Fecha Pago:</strong></td>
+            <td>{{ transactionDetail.transaction_date }}</td>
+          </tr>
+          <tr>
+            <td><strong>N° de tarjeta:</strong></td>
+            <td>XXXX XXXX XXXX {{ transactionDetail.card_number }}</td>
+          </tr>
+          <tr>
+            <td><strong>Tipo de Pago:</strong></td>
+            <td>{{ transactionDetail.pay_type }}</td>
+          </tr>
+          <tr>
+            <td><strong>Monto Pagado:</strong></td>
+            <td>{{ transactionDetail.amount }}</td>
+          </tr>
+          <tr>
+            <td><strong>Comprobante:</strong></td>
+            <td>{{ transactionDetail.authorization_code }}</td>
+          </tr>
+          <tr>
+            <td><strong>N° Orden:</strong></td>
+            <td>{{ transactionDetail.buy_order }}</td>
+          </tr>
+          <tr>
+            <td><strong>Psicologo:</strong></td>
+            <td>{{ nombrePsicologo }}</td>
+          </tr>
+          <tr>
+            <td><strong>Fecha Cita:</strong></td>
+            <td>{{ fechaCita }}</td>
+          </tr>
+          <tr>
+            <td><strong>Hora Cita:</strong></td>
+            <td>{{ horaCita }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>WebPay Plus es solo el facilitador del proceso de pago y no se hace responsable sobre la entrega de productos y
+        servicios. Cualquier duda o consulta por favor contacta al comercio.</p>
+    </div>
+    <table class="botones" style="margin-left: 1%; margin-right: 1%; margin-bottom: 20px;">
+      <ion-button *ngIf="transactionDetail" class="boton" (click)="goHome()">Volver</ion-button>
+      <ion-button *ngIf="transactionDetail" class="boton" (click)="downloadPDF()">Descargar Comprobante</ion-button>
+    </table>
+    <ng-template #errorTemplate>
+      <div class="center-content">
+        <h2>{{ errorMessage }}</h2>
+        <ion-button *ngIf="error" class="boton" (click)="goHome()">Volver</ion-button>
+      </div>
+    </ng-template>
+  </ion-content>
+</div>
